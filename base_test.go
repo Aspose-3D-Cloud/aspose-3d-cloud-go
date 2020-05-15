@@ -63,7 +63,7 @@ func NewBaseTest() *BaseTest {
 		localTestDataFolder: "test_data",
 		TestNumber: 0,
 		// Get App key and App SID from https://aspose.cloud
-		ThreeDCloudAPI: NewThreeDCloudApiService("threed.cloud", "131742276bec11f6b699268401e3c4ce", "https://api.aspose.cloud/v3.0"),
+		ThreeDCloudAPI: NewThreeDCloudApiService("****your AppID****", "****your AppKey****", "https://api.aspose.cloud/v3.0"),
 	}
 	return bt
 }
