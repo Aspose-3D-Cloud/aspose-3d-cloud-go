@@ -1,0 +1,2348 @@
+---
+swagger: "2.0"
+info:
+  version: "3.0"
+  title: "Aspose.3D Cloud API Reference"
+host: "api.aspose.cloud"
+basePath: "/v3.0"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /3d/root:
+    post:
+      tags:
+      - "ThreeDCloud"
+      summary: "Parametric Modeling, Create a Entity with size and located in ..."
+      operationId: "PostModel"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "The name of the source file."
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Name"
+      - in: "body"
+        name: "modeldata"
+        description: "ModelData struct."
+        required: true
+        schema:
+          $ref: "#/definitions/ModelData"
+        x-nullable: true
+        x-exportParamName: "Modeldata"
+      - name: "newformat"
+        in: "query"
+        description: "new format of the source file."
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Newformat"
+        x-optionalDataType: "String"
+      - name: "folder"
+        in: "query"
+        description: "The folder of the source file."
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Folder"
+        x-optionalDataType: "String"
+      - name: "storage"
+        in: "query"
+        description: "The storage type"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Storage"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "IActionResult with the operation status"
+          schema:
+            type: "file"
+          x-nullable: true
+      security:
+      - JWT: []
+  /3d/nodes:
+    delete:
+      tags:
+      - "ThreeDCloud"
+      summary: "Delete nodes from scene,nodes are addressed by Object Addressing Path"
+      operationId: "DeleteNodes"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "The name of the source file."
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Name"
+      - name: "objectaddressingpath"
+        in: "query"
+        description: "The object addressing path."
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Objectaddressingpath"
+      - name: "folder"
+        in: "query"
+        description: "The folder of the source file."
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Folder"
+        x-optionalDataType: "String"
+      - name: "storage"
+        in: "query"
+        description: "The storage type"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Storage"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "IActionResult with the operation status"
+          schema:
+            type: "file"
+          x-nullable: true
+      security:
+      - JWT: []
+  /3d/new:
+    post:
+      tags:
+      - "ThreeDCloud"
+      summary: "Create new file with specified format.\n            "
+      operationId: "PostCreate"
+      produces:
+      - "multipart/form-data"
+      parameters:
+      - name: "format"
+        in: "query"
+        description: "The format of the new file."
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Format"
+      responses:
+        "200":
+          description: "Stream of the new file."
+          schema:
+            type: "file"
+          x-nullable: true
+      security:
+      - JWT: []
+  /3d/saveas/newformat:
+    post:
+      tags:
+      - "ThreeDCloud"
+      summary: "Convert file on server to other formats with fileformat parameter\n\
+        \            "
+      operationId: "PostConvertByFormat"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "The name of the source file."
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Name"
+      - name: "newformat"
+        in: "query"
+        description: "The format of the new file."
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Newformat"
+      - name: "newfilename"
+        in: "query"
+        description: "The name of the new file."
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Newfilename"
+      - name: "folder"
+        in: "query"
+        description: "The folder of the source file."
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Folder"
+        x-optionalDataType: "String"
+      - name: "IsOverwrite"
+        in: "query"
+        description: "Overwrite the source file? true or false."
+        required: false
+        type: "boolean"
+        default: false
+        x-nullable: false
+        x-exportParamName: "IsOverwrite"
+        x-optionalDataType: "Bool"
+      - name: "storage"
+        in: "query"
+        description: "The storage type."
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Storage"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "IActionResult with the operation status."
+          schema:
+            type: "file"
+          x-nullable: true
+      security:
+      - JWT: []
+  /3d/saveas/saveoption:
+    post:
+      tags:
+      - "ThreeDCloud"
+      summary: "Convert file on server to other formats with saveOption parameter\n\
+        \            "
+      operationId: "PostConvertByOpt"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "The name of the source file."
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Name"
+      - in: "body"
+        name: "saveOptions"
+        description: "The saveOptions to save the file"
+        required: true
+        schema:
+          $ref: "#/definitions/SaveOptions"
+        x-nullable: true
+        x-exportParamName: "SaveOptions"
+      - name: "newfilename"
+        in: "query"
+        description: "The name of the new file"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Newfilename"
+      - name: "folder"
+        in: "query"
+        description: "The folder of the source file"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Folder"
+        x-optionalDataType: "String"
+      - name: "IsOverwrite"
+        in: "query"
+        description: "Overwrite the source file? true or false"
+        required: false
+        type: "boolean"
+        default: false
+        x-nullable: false
+        x-exportParamName: "IsOverwrite"
+        x-optionalDataType: "Bool"
+      - name: "storage"
+        in: "query"
+        description: "The storage type"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Storage"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "IActionResult with the operation status"
+          schema:
+            type: "file"
+          x-nullable: true
+      security:
+      - JWT: []
+  /3d/saveas/part:
+    post:
+      tags:
+      - "ThreeDCloud"
+      summary: "Convert part of the file into different format"
+      operationId: "PostSaveAsPart"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "The name of the source file"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Name"
+      - name: "objectaddressingpath"
+        in: "query"
+        description: "The object addressing path"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Objectaddressingpath"
+      - name: "newformat"
+        in: "query"
+        description: "The format of the new file"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Newformat"
+      - name: "newfilename"
+        in: "query"
+        description: "The name of the new file"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Newfilename"
+      - name: "folder"
+        in: "query"
+        description: "The folder of the source file"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Folder"
+        x-optionalDataType: "String"
+      - name: "IsOverwrite"
+        in: "query"
+        description: "Overwrite the source file? true or false"
+        required: false
+        type: "boolean"
+        default: false
+        x-nullable: false
+        x-exportParamName: "IsOverwrite"
+        x-optionalDataType: "Bool"
+      - name: "storage"
+        in: "query"
+        description: "The storage type"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Storage"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "IActionResult with the operation status"
+          schema:
+            type: "file"
+          x-nullable: true
+      security:
+      - JWT: []
+  /3d/extract/rawdata:
+    post:
+      tags:
+      - "ThreeDCloud"
+      summary: "Extract raw data(without any modification) from a password protected\
+        \ PDF file\n            "
+      operationId: "PostPdfRawData"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "The PDF file's mame"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Name"
+      - name: "multifileprefix"
+        in: "query"
+        description: "The file name for generated raw date"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Multifileprefix"
+      - name: "password"
+        in: "query"
+        description: "The password to open the PDF"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Password"
+        x-optionalDataType: "String"
+      - name: "folder"
+        in: "query"
+        description: "The folder for source file"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Folder"
+        x-optionalDataType: "String"
+      - name: "storage"
+        in: "query"
+        description: "The storage type"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Storage"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: ""
+          schema:
+            type: "file"
+          x-nullable: true
+      security:
+      - JWT: []
+  /3d/extract/scene:
+    post:
+      tags:
+      - "ThreeDCloud"
+      summary: "Extract and save in different format\n            "
+      operationId: "PostSceneToFile"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "The PDF file's mame"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Name"
+      - name: "multifileprefix"
+        in: "query"
+        description: "The file name for extracted scene"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Multifileprefix"
+      - name: "newformat"
+        in: "query"
+        description: "The format of new file"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Newformat"
+        x-optionalDataType: "String"
+      - name: "password"
+        in: "query"
+        description: "The password to open the PDF"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Password"
+        x-optionalDataType: "String"
+      - name: "folder"
+        in: "query"
+        description: "The folder for source file"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Folder"
+        x-optionalDataType: "String"
+      - name: "storage"
+        in: "query"
+        description: "The storage type"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Storage"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: ""
+          schema:
+            type: "file"
+          x-nullable: true
+      security:
+      - JWT: []
+  /3d/triangulate/new:
+    post:
+      tags:
+      - "ThreeDCloud"
+      summary: "Triangulate whole file and save to the different file"
+      operationId: "PostTriangulateNew"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "The file's mame"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Name"
+      - name: "newfilename"
+        in: "query"
+        description: "The new file's mame"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Newfilename"
+      - name: "newformat"
+        in: "query"
+        description: "The new file's format"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Newformat"
+      - name: "folder"
+        in: "query"
+        description: "The folder for source file"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Folder"
+        x-optionalDataType: "String"
+      - name: "storage"
+        in: "query"
+        description: "The storage type"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Storage"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: ""
+          schema:
+            type: "file"
+          x-nullable: true
+      security:
+      - JWT: []
+  /3d/triangulate/original:
+    post:
+      tags:
+      - "ThreeDCloud"
+      summary: "Triangulate whole file and save to original file"
+      operationId: "PostTriangulateOriginal"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "The file's mame"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Name"
+      - name: "folder"
+        in: "query"
+        description: "The folder for source file"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Folder"
+        x-optionalDataType: "String"
+      - name: "storage"
+        in: "query"
+        description: "The storage type"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Storage"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: ""
+          schema:
+            type: "file"
+          x-nullable: true
+      security:
+      - JWT: []
+  /3d/triangulate/part:
+    post:
+      tags:
+      - "ThreeDCloud"
+      summary: "Triangulate part of the scene(Specified by OAP) and save the scene\
+        \ to different file "
+      operationId: "PostTriangulatePart"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "The file's mame"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Name"
+      - name: "objectaddressingpath"
+        in: "query"
+        description: "The node or mesh getted by OAP."
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Objectaddressingpath"
+      - name: "newfilename"
+        in: "query"
+        description: "The new file's mame"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Newfilename"
+      - name: "newformat"
+        in: "query"
+        description: "The new file's format"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Newformat"
+      - name: "folder"
+        in: "query"
+        description: "The folder for source file"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Folder"
+        x-optionalDataType: "String"
+      - name: "storage"
+        in: "query"
+        description: "The storage type"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "Storage"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: ""
+          schema:
+            type: "file"
+          x-nullable: true
+      security:
+      - JWT: []
+  /3d/storage/file/{path}:
+    get:
+      tags:
+      - "ThreeDCloud"
+      summary: "Download file"
+      operationId: "DownloadFile"
+      produces:
+      - "multipart/form-data"
+      parameters:
+      - name: "path"
+        in: "path"
+        description: "File path e.g. '/folder/file.ext'"
+        required: true
+        type: "string"
+        x-nullable: false
+        x-exportParamName: "Path"
+      - name: "storageName"
+        in: "query"
+        description: "Storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "StorageName"
+        x-optionalDataType: "String"
+      - name: "versionId"
+        in: "query"
+        description: "File version ID to download"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "VersionId"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "The raw data of the file."
+          schema:
+            type: "file"
+          x-nullable: true
+        "401":
+          description: "Authorization token is invalid or expired."
+        "404":
+          description: "File for given path not found."
+      security:
+      - JWT: []
+      x-binary-result: true
+    put:
+      tags:
+      - "ThreeDCloud"
+      summary: "Upload file"
+      operationId: "UploadFile"
+      consumes:
+      - "multipart/form-data"
+      parameters:
+      - name: "path"
+        in: "path"
+        description: "Path where to upload including filename and extension e.g. /file.ext\
+          \ or /Folder 1/file.ext\n            If the content is multipart and path\
+          \ does not contains the file name it tries to get them from filename parameter\n\
+          \            from Content-Disposition header.\n            "
+        required: true
+        type: "string"
+        x-nullable: false
+        x-exportParamName: "Path"
+      - name: "storageName"
+        in: "query"
+        description: "Storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "StorageName"
+        x-optionalDataType: "String"
+      - name: "File"
+        in: "formData"
+        description: "File to upload"
+        required: true
+        type: "file"
+        x-exportParamName: "File"
+      responses:
+        "200":
+          description: "Empty error list if the upload is successful."
+          schema:
+            $ref: "#/definitions/FilesUploadResult"
+          x-nullable: true
+        "401":
+          description: "Authorization token is invalid or expired."
+      security:
+      - JWT: []
+    delete:
+      tags:
+      - "ThreeDCloud"
+      summary: "Delete file"
+      operationId: "DeleteFile"
+      parameters:
+      - name: "path"
+        in: "path"
+        description: "File path e.g. '/folder/file.ext'"
+        required: true
+        type: "string"
+        x-nullable: false
+        x-exportParamName: "Path"
+      - name: "storageName"
+        in: "query"
+        description: "Storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "StorageName"
+        x-optionalDataType: "String"
+      - name: "versionId"
+        in: "query"
+        description: "File version ID to delete"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "VersionId"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Returns 200 if the delete is successful."
+        "401":
+          description: "Authorization token is invalid or expired"
+      security:
+      - JWT: []
+  /3d/storage/file/copy/{srcPath}:
+    put:
+      tags:
+      - "ThreeDCloud"
+      summary: "Copy file"
+      operationId: "CopyFile"
+      parameters:
+      - name: "srcPath"
+        in: "path"
+        description: "Source file path e.g. '/folder/file.ext'"
+        required: true
+        type: "string"
+        x-nullable: false
+        x-exportParamName: "SrcPath"
+      - name: "destPath"
+        in: "query"
+        description: "Destination file path"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "DestPath"
+      - name: "srcStorageName"
+        in: "query"
+        description: "Source storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "SrcStorageName"
+        x-optionalDataType: "String"
+      - name: "destStorageName"
+        in: "query"
+        description: "Destination storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "DestStorageName"
+        x-optionalDataType: "String"
+      - name: "versionId"
+        in: "query"
+        description: "File version ID to copy"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "VersionId"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Returns 200 if the copy is successful."
+        "401":
+          description: "Authorization token is invalid or expired."
+      security:
+      - JWT: []
+  /3d/storage/file/move/{srcPath}:
+    put:
+      tags:
+      - "ThreeDCloud"
+      summary: "Move file"
+      operationId: "MoveFile"
+      parameters:
+      - name: "srcPath"
+        in: "path"
+        description: "Source file path e.g. '/src.ext'"
+        required: true
+        type: "string"
+        x-nullable: false
+        x-exportParamName: "SrcPath"
+      - name: "destPath"
+        in: "query"
+        description: "Destination file path e.g. '/dest.ext'"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "DestPath"
+      - name: "srcStorageName"
+        in: "query"
+        description: "Source storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "SrcStorageName"
+        x-optionalDataType: "String"
+      - name: "destStorageName"
+        in: "query"
+        description: "Destination storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "DestStorageName"
+        x-optionalDataType: "String"
+      - name: "versionId"
+        in: "query"
+        description: "File version ID to move"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "VersionId"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Returns 200 if the move is successful."
+        "401":
+          description: "Authorization token is invalid or expired."
+        "404":
+          description: "File for given path not found."
+      security:
+      - JWT: []
+  /3d/storage/folder/{path}:
+    get:
+      tags:
+      - "ThreeDCloud"
+      summary: "Get all files and folders within a folder"
+      operationId: "GetFilesList"
+      parameters:
+      - name: "path"
+        in: "path"
+        description: "Folder path e.g. '/folder'"
+        required: true
+        type: "string"
+        x-nullable: false
+        x-exportParamName: "Path"
+      - name: "storageName"
+        in: "query"
+        description: "Storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "StorageName"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Returns all files and folders contained by the folder."
+          schema:
+            $ref: "#/definitions/FilesList"
+          x-nullable: true
+        "401":
+          description: "Authorization token is invalid or expired."
+        "404":
+          description: "Can't find folder for given path."
+      security:
+      - JWT: []
+    put:
+      tags:
+      - "ThreeDCloud"
+      summary: "Create the folder"
+      operationId: "CreateFolder"
+      parameters:
+      - name: "path"
+        in: "path"
+        description: "Folder path to create e.g. 'folder_1/folder_2/'"
+        required: true
+        type: "string"
+        x-nullable: false
+        x-exportParamName: "Path"
+      - name: "storageName"
+        in: "query"
+        description: "Storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "StorageName"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Returns 200 if the create is successful."
+        "400":
+          description: "Storage not found or it is not associated with the application."
+        "401":
+          description: "Authorization token is invalid or expired."
+      security:
+      - JWT: []
+    delete:
+      tags:
+      - "ThreeDCloud"
+      summary: "Delete folder"
+      operationId: "DeleteFolder"
+      parameters:
+      - name: "path"
+        in: "path"
+        description: "Folder path e.g. '/folder'"
+        required: true
+        type: "string"
+        x-nullable: false
+        x-exportParamName: "Path"
+      - name: "storageName"
+        in: "query"
+        description: "Storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "StorageName"
+        x-optionalDataType: "String"
+      - name: "recursive"
+        in: "query"
+        description: "Enable to delete folders, subfolders and files"
+        required: false
+        type: "boolean"
+        default: false
+        x-nullable: false
+        x-exportParamName: "Recursive"
+        x-optionalDataType: "Bool"
+      responses:
+        "200":
+          description: "Returns 200 if the delete is successful."
+        "401":
+          description: "Authorization token is invalid or expired"
+      security:
+      - JWT: []
+  /3d/storage/folder/copy/{srcPath}:
+    put:
+      tags:
+      - "ThreeDCloud"
+      summary: "Copy folder"
+      operationId: "CopyFolder"
+      parameters:
+      - name: "srcPath"
+        in: "path"
+        description: "Source folder path e.g. '/src'"
+        required: true
+        type: "string"
+        x-nullable: false
+        x-exportParamName: "SrcPath"
+      - name: "destPath"
+        in: "query"
+        description: "Destination folder path e.g. '/dst'"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "DestPath"
+      - name: "srcStorageName"
+        in: "query"
+        description: "Source storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "SrcStorageName"
+        x-optionalDataType: "String"
+      - name: "destStorageName"
+        in: "query"
+        description: "Destination storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "DestStorageName"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Returns 200 if the copy is successful."
+        "401":
+          description: "Authorization token is invalid or expired"
+      security:
+      - JWT: []
+  /3d/storage/folder/move/{srcPath}:
+    put:
+      tags:
+      - "ThreeDCloud"
+      summary: "Move folder"
+      operationId: "MoveFolder"
+      parameters:
+      - name: "srcPath"
+        in: "path"
+        description: "Folder path to move e.g. '/folder'"
+        required: true
+        type: "string"
+        x-nullable: false
+        x-exportParamName: "SrcPath"
+      - name: "destPath"
+        in: "query"
+        description: "Destination folder path to move to e.g '/dst'"
+        required: true
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "DestPath"
+      - name: "srcStorageName"
+        in: "query"
+        description: "Source storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "SrcStorageName"
+        x-optionalDataType: "String"
+      - name: "destStorageName"
+        in: "query"
+        description: "Destination storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "DestStorageName"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Returns 200 if the move is successful."
+        "401":
+          description: "Authorization token is invalid or expired."
+      security:
+      - JWT: []
+  /3d/storage/{storageName}/exist:
+    get:
+      tags:
+      - "ThreeDCloud"
+      summary: "Check if storage exists"
+      operationId: "StorageExists"
+      parameters:
+      - name: "storageName"
+        in: "path"
+        description: "Storage name"
+        required: true
+        type: "string"
+        x-nullable: false
+        x-exportParamName: "StorageName"
+      responses:
+        "200":
+          description: "Storage exist result."
+          schema:
+            $ref: "#/definitions/StorageExist"
+          x-nullable: true
+        "401":
+          description: "Authorization token is invalid or expired."
+      security:
+      - JWT: []
+  /3d/storage/exist/{path}:
+    get:
+      tags:
+      - "ThreeDCloud"
+      summary: "Check if file or folder exists"
+      operationId: "ObjectExists"
+      parameters:
+      - name: "path"
+        in: "path"
+        description: "File or folder path e.g. '/file.ext' or '/folder'"
+        required: true
+        type: "string"
+        x-nullable: false
+        x-exportParamName: "Path"
+      - name: "storageName"
+        in: "query"
+        description: "Storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "StorageName"
+        x-optionalDataType: "String"
+      - name: "versionId"
+        in: "query"
+        description: "File version ID"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "VersionId"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Object exist result."
+          schema:
+            $ref: "#/definitions/ObjectExist"
+          x-nullable: true
+        "401":
+          description: "Authorization token is invalid or expired."
+      security:
+      - JWT: []
+  /3d/storage/disc:
+    get:
+      tags:
+      - "ThreeDCloud"
+      summary: "Get disc usage"
+      operationId: "GetDiscUsage"
+      parameters:
+      - name: "storageName"
+        in: "query"
+        description: "Storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "StorageName"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "Disc usage."
+          schema:
+            $ref: "#/definitions/DiscUsage"
+          x-nullable: true
+        "400":
+          description: "Storage not found or it is not associated with an application."
+        "401":
+          description: "Authorization token is invalid or expired."
+      security:
+      - JWT: []
+  /3d/storage/version/{path}:
+    get:
+      tags:
+      - "ThreeDCloud"
+      summary: "Get file versions"
+      operationId: "GetFileVersions"
+      parameters:
+      - name: "path"
+        in: "path"
+        description: "File path e.g. '/file.ext'"
+        required: true
+        type: "string"
+        x-nullable: false
+        x-exportParamName: "Path"
+      - name: "storageName"
+        in: "query"
+        description: "Storage name"
+        required: false
+        type: "string"
+        x-nullable: true
+        x-exportParamName: "StorageName"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "File versions."
+          schema:
+            $ref: "#/definitions/FileVersions"
+          x-nullable: true
+        "401":
+          description: "Authorization token is invalid or expired."
+      security:
+      - JWT: []
+  /connect/token:
+    post:
+      tags:
+      - "ThreeDCloud"
+      summary: "Get Access token"
+      operationId: "OAuth_Post"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - name: "grant_type"
+        in: "formData"
+        description: "Grant Type"
+        required: true
+        type: "string"
+        x-exportParamName: "GrantType"
+      - name: "client_id"
+        in: "formData"
+        description: "App SID"
+        required: true
+        type: "string"
+        x-exportParamName: "ClientId"
+      - name: "client_secret"
+        in: "formData"
+        description: "App Key"
+        required: true
+        type: "string"
+        x-exportParamName: "ClientSecret"
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: "#/definitions/AccessTokenResponse"
+          x-nullable: true
+      x-operationId: "OAuth_Post"
+securityDefinitions:
+  JWT:
+    type: "oauth2"
+    tokenUrl: "https://api.aspose.cloud/connect/token"
+    flow: "application"
+definitions:
+  ModelData:
+    type: "object"
+    properties:
+      Type:
+        type: "string"
+        description: "e.g Node"
+      Transform:
+        $ref: "#/definitions/Transform"
+      Entity:
+        $ref: "#/definitions/Entity"
+    description: "Parametric Modeling"
+    example:
+      Entity:
+        Sphere:
+          WidthSegments: 4
+          Radius: 9.018348186070783
+          HeightSegments: 5
+          PhiLength: 9.369310271410669
+          ThetaStart: 6.683562403749608
+          PhiStart: 9.965781217890562
+          ThetaLength: 8.762042012749001
+          Name: "Name"
+        Cylinder:
+          RadialSegments: 1
+          HeightSegments: 6
+          RadiusBottom: 1.2315135367772556
+          ThetaStart: 7.457744773683766
+          Height: 1.0246457001441578
+          RadiusTop: 7.386281948385884
+          OpenEnded: true
+          ThetaLength: 1.1730742509559433
+          Name: "Name"
+        Type: "Type"
+        Plane:
+          WidthSegments: 6
+          Length: 6.778324963048013
+          LengthSegments: 5
+          Width: 6.878052220127876
+          Name: "Name"
+        Torus:
+          Radius: 6.438423552598547
+          RadialSegments: 6
+          Tube: 3.5571952270680973
+          Arc: 2.8841621266687802
+          TubularSegments: 1
+          Name: "Name"
+        Box:
+          WidthSegments: 2
+          HeightSegments: 4
+          Length: 2.3021358869347655
+          LengthSegments: 3
+          Height: 9.301444243932576
+          Width: 7.061401241503109
+          Name: "Name"
+      Type: "Type"
+      Transform:
+        Translation:
+          Length: 5.637376656633329
+          x: 0.8008281904610115
+          y: 6.027456183070403
+          z: 1.4658129805029452
+          Length2: 5.962133916683182
+        EulerAngles:
+          Length: 5.637376656633329
+          x: 0.8008281904610115
+          y: 6.027456183070403
+          z: 1.4658129805029452
+          Length2: 5.962133916683182
+        Scale:
+          Length: 5.637376656633329
+          x: 0.8008281904610115
+          y: 6.027456183070403
+          z: 1.4658129805029452
+          Length2: 5.962133916683182
+        PreRotation:
+          Length: 5.637376656633329
+          x: 0.8008281904610115
+          y: 6.027456183070403
+          z: 1.4658129805029452
+          Length2: 5.962133916683182
+        PostRotation:
+          Length: 5.637376656633329
+          x: 0.8008281904610115
+          y: 6.027456183070403
+          z: 1.4658129805029452
+          Length2: 5.962133916683182
+  Transform:
+    type: "object"
+    properties:
+      Translation:
+        description: "Gets or sets the translation"
+        $ref: "#/definitions/Vector3"
+      Scale:
+        description: "Gets or sets the scale"
+        $ref: "#/definitions/Vector3"
+      PreRotation:
+        description: "Gets or sets the pre-rotation represented in degree"
+        $ref: "#/definitions/Vector3"
+      PostRotation:
+        description: "Gets or sets the post-rotation represented in degree"
+        $ref: "#/definitions/Vector3"
+      EulerAngles:
+        description: "Gets or sets the rotation represented in euler angles, measured\
+          \ in degree\n            "
+        $ref: "#/definitions/Vector3"
+    description: "A transform contains information that allow access to object's translate/scale/rotation\n\
+      or transform matrix at minimum cost This is used by local transform.\n     \
+      \       "
+    example:
+      Translation:
+        Length: 5.637376656633329
+        x: 0.8008281904610115
+        y: 6.027456183070403
+        z: 1.4658129805029452
+        Length2: 5.962133916683182
+      EulerAngles:
+        Length: 5.637376656633329
+        x: 0.8008281904610115
+        y: 6.027456183070403
+        z: 1.4658129805029452
+        Length2: 5.962133916683182
+      Scale:
+        Length: 5.637376656633329
+        x: 0.8008281904610115
+        y: 6.027456183070403
+        z: 1.4658129805029452
+        Length2: 5.962133916683182
+      PreRotation:
+        Length: 5.637376656633329
+        x: 0.8008281904610115
+        y: 6.027456183070403
+        z: 1.4658129805029452
+        Length2: 5.962133916683182
+      PostRotation:
+        Length: 5.637376656633329
+        x: 0.8008281904610115
+        y: 6.027456183070403
+        z: 1.4658129805029452
+        Length2: 5.962133916683182
+  Vector3:
+    type: "object"
+    required:
+    - "Length"
+    - "Length2"
+    - "x"
+    - "y"
+    - "z"
+    properties:
+      x:
+        type: "number"
+        format: "double"
+        description: "The x component."
+      y:
+        type: "number"
+        format: "double"
+        description: "The y component."
+      z:
+        type: "number"
+        format: "double"
+        description: "The z component."
+      Length2:
+        type: "number"
+        format: "double"
+        description: "Gets the square of the length.\n            "
+      Length:
+        type: "number"
+        format: "double"
+        description: "Gets the length of this vector."
+    description: "A vector with three components.\n            "
+    example:
+      Length: 5.637376656633329
+      x: 0.8008281904610115
+      y: 6.027456183070403
+      z: 1.4658129805029452
+      Length2: 5.962133916683182
+  Entity:
+    type: "object"
+    properties:
+      Type:
+        type: "string"
+        description: "Box/Cylinder/Sphere/Torus/Plane"
+      Box:
+        description: "Gets or sets Box entity"
+        $ref: "#/definitions/Box"
+      Cylinder:
+        description: "Gets or sets Cylinder entity"
+        $ref: "#/definitions/Cylinder"
+      Sphere:
+        description: "Gets or sets Sphere entity"
+        $ref: "#/definitions/Sphere"
+      Torus:
+        description: "Gets or sets Torus entity"
+        $ref: "#/definitions/Torus"
+      Plane:
+        description: "Gets or sets Plane entity"
+        $ref: "#/definitions/Plane"
+    description: "Entity class\n            "
+    example:
+      Sphere:
+        WidthSegments: 4
+        Radius: 9.018348186070783
+        HeightSegments: 5
+        PhiLength: 9.369310271410669
+        ThetaStart: 6.683562403749608
+        PhiStart: 9.965781217890562
+        ThetaLength: 8.762042012749001
+        Name: "Name"
+      Cylinder:
+        RadialSegments: 1
+        HeightSegments: 6
+        RadiusBottom: 1.2315135367772556
+        ThetaStart: 7.457744773683766
+        Height: 1.0246457001441578
+        RadiusTop: 7.386281948385884
+        OpenEnded: true
+        ThetaLength: 1.1730742509559433
+        Name: "Name"
+      Type: "Type"
+      Plane:
+        WidthSegments: 6
+        Length: 6.778324963048013
+        LengthSegments: 5
+        Width: 6.878052220127876
+        Name: "Name"
+      Torus:
+        Radius: 6.438423552598547
+        RadialSegments: 6
+        Tube: 3.5571952270680973
+        Arc: 2.8841621266687802
+        TubularSegments: 1
+        Name: "Name"
+      Box:
+        WidthSegments: 2
+        HeightSegments: 4
+        Length: 2.3021358869347655
+        LengthSegments: 3
+        Height: 9.301444243932576
+        Width: 7.061401241503109
+        Name: "Name"
+  Box:
+    type: "object"
+    required:
+    - "Height"
+    - "HeightSegments"
+    - "Length"
+    - "LengthSegments"
+    - "Width"
+    - "WidthSegments"
+    properties:
+      Length:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the length of the box\n            "
+      Width:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the width of the box"
+      Height:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the height of the box"
+      Name:
+        type: "string"
+        description: "Gets or sets the name of the box\n            "
+      LengthSegments:
+        type: "integer"
+        format: "int32"
+        description: "Gets or sets the lengthSegments of the box"
+      WidthSegments:
+        type: "integer"
+        format: "int32"
+        description: "Gets or sets the widthSegments of the box"
+      HeightSegments:
+        type: "integer"
+        format: "int32"
+        description: "Gets or sets the heightSegments of the box"
+    description: "The Box Entity"
+    example:
+      WidthSegments: 2
+      HeightSegments: 4
+      Length: 2.3021358869347655
+      LengthSegments: 3
+      Height: 9.301444243932576
+      Width: 7.061401241503109
+      Name: "Name"
+  Cylinder:
+    type: "object"
+    required:
+    - "Height"
+    - "HeightSegments"
+    - "OpenEnded"
+    - "RadialSegments"
+    - "RadiusBottom"
+    - "RadiusTop"
+    - "ThetaLength"
+    - "ThetaStart"
+    properties:
+      Name:
+        type: "string"
+        description: "Gets or sets the name of the cylinder\n            "
+      RadiusTop:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the radius of cylinder's top cap."
+      RadiusBottom:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the radius bottoof cylinder's bottom cap.\n   \
+          \         "
+      Height:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the height of the cylinder."
+      RadialSegments:
+        type: "integer"
+        format: "int32"
+        description: "Gets or sets the radial segments."
+      HeightSegments:
+        type: "integer"
+        format: "int32"
+        description: "Gets or sets the height segments."
+      OpenEnded:
+        type: "boolean"
+        description: "Gets or sets a value indicating whether this Aspose.ThreeD.Entities.Cylinder\n\
+          open ended. The default value is false."
+      ThetaStart:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the theta start. The default value is 0.\n    \
+          \        "
+      ThetaLength:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the length of the theta. The default value is 2p"
+    example:
+      RadialSegments: 1
+      HeightSegments: 6
+      RadiusBottom: 1.2315135367772556
+      ThetaStart: 7.457744773683766
+      Height: 1.0246457001441578
+      RadiusTop: 7.386281948385884
+      OpenEnded: true
+      ThetaLength: 1.1730742509559433
+      Name: "Name"
+  Sphere:
+    type: "object"
+    required:
+    - "HeightSegments"
+    - "PhiLength"
+    - "PhiStart"
+    - "Radius"
+    - "ThetaLength"
+    - "ThetaStart"
+    - "WidthSegments"
+    properties:
+      Name:
+        type: "string"
+        description: "Gets or sets the Name of Sphere."
+      WidthSegments:
+        type: "integer"
+        format: "int32"
+        description: "Gets or sets the width segments."
+      HeightSegments:
+        type: "integer"
+        format: "int32"
+        description: "Gets or sets the height segments.\n            "
+      PhiStart:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the phi start.\n            "
+      PhiLength:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the length of the phi."
+      ThetaStart:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the theta start.\n            "
+      ThetaLength:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the length of the theta."
+      Radius:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the radius "
+    description: "The Sphere Entity"
+    example:
+      WidthSegments: 4
+      Radius: 9.018348186070783
+      HeightSegments: 5
+      PhiLength: 9.369310271410669
+      ThetaStart: 6.683562403749608
+      PhiStart: 9.965781217890562
+      ThetaLength: 8.762042012749001
+      Name: "Name"
+  Torus:
+    type: "object"
+    required:
+    - "Arc"
+    - "RadialSegments"
+    - "Radius"
+    - "Tube"
+    - "TubularSegments"
+    properties:
+      Name:
+        type: "string"
+        description: "Gets or sets the Name of the torus."
+      Radius:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the radius of the torus.\n            "
+      Tube:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the radius of the tube."
+      RadialSegments:
+        type: "integer"
+        format: "int32"
+        description: "Gets or sets the radial segments."
+      TubularSegments:
+        type: "integer"
+        format: "int32"
+        description: "Gets or sets the tubular segments."
+      Arc:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the arc."
+    description: "The Torus Entity class"
+    example:
+      Radius: 6.438423552598547
+      RadialSegments: 6
+      Tube: 3.5571952270680973
+      Arc: 2.8841621266687802
+      TubularSegments: 1
+      Name: "Name"
+  Plane:
+    type: "object"
+    required:
+    - "Length"
+    - "LengthSegments"
+    - "Width"
+    - "WidthSegments"
+    properties:
+      Name:
+        type: "string"
+        description: "The name of Plane"
+      Length:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the length of the plane.\n            "
+      Width:
+        type: "number"
+        format: "double"
+        description: "Gets or sets the width of the plane\n            "
+      LengthSegments:
+        type: "integer"
+        format: "int32"
+        description: "Gets or sets the length segments.\n            "
+      WidthSegments:
+        type: "integer"
+        format: "int32"
+        description: "Gets or sets the width segments."
+    description: "Plane Entity"
+    example:
+      WidthSegments: 6
+      Length: 6.778324963048013
+      LengthSegments: 5
+      Width: 6.878052220127876
+      Name: "Name"
+  AMFSaveOption:
+    allOf:
+    - type: "object"
+      properties:
+        EnableCompression:
+          type: "boolean"
+          description: "Whether to use compression to reduce the final file size,\
+            \ default value is true."
+    - $ref: "#/definitions/SaveOptions"
+  ColladaSaveOption:
+    allOf:
+    - type: "object"
+      properties:
+        Indented:
+          type: "boolean"
+          description: "Gets or sets whether the exported XML document is indented."
+        TransformStyle:
+          description: "Gets or sets  of the Transform Style."
+          $ref: "#/definitions/ColladaTransformStyle"
+    - $ref: "#/definitions/SaveOptions"
+  Discreet3DSSaveOption:
+    allOf:
+    - type: "object"
+      properties:
+        ExportLight:
+          type: "boolean"
+          description: "Gets or sets whether export all lights in the scene."
+        ExportCamera:
+          type: "boolean"
+          description: "Gets or sets whether export all cameras in the scene"
+        DuplicatedNameSeparator:
+          type: "string"
+          description: "The separator between object's name and the duplicated counter,\
+            \ default value is \"_\". When scene contains objects that use the same\
+            \ name, Aspose.3D 3DS exporter will generate a different name for the\
+            \ object. For example there's two nodes named \"Box\", the first node\
+            \ will have a name \"Box\", and the second node will get a new name \"\
+            Box_2\" using the default configuration"
+        DuplicatedNameCounterBase:
+          type: "integer"
+          format: "int32"
+          description: "The counter used by generating new name for duplicated names"
+        DuplicatedNameCounterFormat:
+          type: "string"
+          description: "The format of the duplicated counter, default value is empty\
+            \ string."
+        MasterScale:
+          type: "number"
+          format: "double"
+          description: "Gets or sets the master scale used in exporting."
+        GammaCorrectedColor:
+          type: "boolean"
+          description: "Gets or sets the GammaCorrectedColor."
+        FlipCoordinateSystem:
+          type: "boolean"
+          description: "Gets or sets flip coordinate system of control points/normal\
+            \ during importing/exporting.."
+        HighPreciseColor:
+          type: "boolean"
+          description: "Gets or sets the HighPreciseColor."
+    - $ref: "#/definitions/SaveOptions"
+  DracoSaveOption:
+    allOf:
+    - type: "object"
+      properties:
+        PositionBits:
+          type: "integer"
+          format: "int32"
+          description: "Quantization bits for position, default value is 14"
+        TextureCoordinateBits:
+          type: "integer"
+          format: "int32"
+          description: "Quantization bits for texture coordinate, default value is\
+            \ 12"
+        ColorBits:
+          type: "integer"
+          format: "int32"
+          description: "Quantization bits for vertex color, default value is 10"
+        NormalBits:
+          type: "integer"
+          format: "int32"
+          description: "Quantization bits for normal vectors, default value is 10"
+        CompressionLevel:
+          description: "Compression level, default value is Aspose.ThreeD.Formats.DracoCompressionLevel.Standard."
+          $ref: "#/definitions/DracoCompressionLevel"
+    - $ref: "#/definitions/SaveOptions"
+  FBXSaveOption:
+    allOf:
+    - type: "object"
+      properties:
+        EnableCompression:
+          type: "boolean"
+          description: " Compression large binary data in the FBX file, default value\
+            \ is true"
+        FoldRepeatedCurveData:
+          type: "boolean"
+          description: "Gets or sets whether reuse repeated curve data by increasing\
+            \ last data's ref count"
+        ExportLegacyMaterialProperties:
+          type: "boolean"
+          description: "Gets or sets whether export legacy material properties, used\
+            \ for back compatibility. This option is turned on by default"
+        VideoForTexture:
+          type: "boolean"
+          description: "Gets or sets whether generate a Video instance for Aspose.ThreeD.Shading.Texture\
+            \ when exporting as FBX."
+        GenerateVertexElementMaterial:
+          type: "boolean"
+          description: "Gets or sets whether always generate a Aspose.ThreeD.Entities.VertexElementMaterial\
+            \ for geometries if the attached node contains materials. This is turned\
+            \ off by default."
+    - $ref: "#/definitions/SaveOptions"
+  HTMLSaveOption:
+    allOf:
+    - type: "object"
+      properties:
+        ShowGrid:
+          type: "boolean"
+          description: " Display a grid in the scene. Default value is true."
+        ShowRulers:
+          type: "boolean"
+          description: " Display rulers of x/y/z axises in the scene to measure the\
+            \ model. Default value is false"
+        ShowUI:
+          type: "boolean"
+          description: "Display a simple UI in the scene. Default value is true"
+        OrientationBox:
+          type: "boolean"
+          description: "Display a orientation box. Default value is true."
+        UpVector:
+          type: "string"
+          description: "Gets or sets the up vector, value can be \"x\"/\"y\"/\"z\"\
+            , default value is \"y\"."
+        FarPlane:
+          type: "number"
+          format: "double"
+          description: "Gets or sets the far plane of the camera, default value is\
+            \ 1000"
+        NearPlane:
+          type: "number"
+          format: "double"
+          description: "Gets or sets the near plane of the camera, default value is\
+            \ 1"
+        LookAt:
+          description: "Gets or sets the default look at position, default value is\
+            \ (0, 0, 0)"
+          $ref: "#/definitions/Vector3"
+        CameraPosition:
+          description: "Gets or sets the initial position of the camera, default value\
+            \ is (10, 10, 10)"
+          $ref: "#/definitions/Vector3"
+        FieldOfView:
+          type: "number"
+          format: "double"
+          description: " Gets or sets the field of the view, default value is 45,\
+            \ measured in degree"
+    - $ref: "#/definitions/SaveOptions"
+  GLTFSaveOption:
+    allOf:
+    - type: "object"
+      properties:
+        PrettyPrint:
+          type: "boolean"
+          description: "The JSON content of GLTF file is indented for human reading,\
+            \ default value is false."
+        EmbedAssets:
+          type: "boolean"
+          description: "Embed all external assets as base64 into single file in ASCII\
+            \ mode, default value is false."
+        UseCommonMaterials:
+          type: "boolean"
+          description: "Serialize materials using KHR common material extensions,\
+            \ default value is false. Set this to false will cause Aspose.3D export\
+            \ a set of vertex/fragment shader if Aspose.ThreeD.Formats.GLTFSaveOptions.ExportShaders"
+        FlipTexCoordV:
+          type: "boolean"
+          description: "Flip texture coordinate v(t) component, default value is true."
+        BufferFile:
+          type: "boolean"
+          description: "The file name of the external buffer file used to store binary\
+            \ data. If this file is not specified, Aspose.3D will generate a name\
+            \ for you. This is ignored when export glTF in binary mode."
+        SaveExtras:
+          type: "boolean"
+          description: "Save scene object's dynamic properties into 'extra' fields\
+            \ in the generated glTF file. This is useful to provide application-specific\
+            \ data. Default value is false.."
+        DracoCompression:
+          type: "boolean"
+          description: "Gets or sets whether to enable draco compression."
+        FileContentType:
+          description: "Gets or sets  of the FileContent type."
+          $ref: "#/definitions/FileContentType"
+    - $ref: "#/definitions/SaveOptions"
+  ObjSaveOption:
+    allOf:
+    - type: "object"
+      properties:
+        Verbose:
+          type: "boolean"
+          description: "Gets or sets whether generate comments for each section."
+        SerializeW:
+          type: "boolean"
+          description: "Gets or sets whether serialize W component in model's vertex\
+            \ position."
+        EnableMaterials:
+          type: "boolean"
+          description: "Gets or sets whether import/export materials for each object."
+        FlipCoordinateSystem:
+          type: "boolean"
+          description: "Gets or sets whether flip coordinate system of control points/normal\
+            \ during importing/exporting."
+    - $ref: "#/definitions/SaveOptions"
+  PdfSaveOption:
+    allOf:
+    - type: "object"
+      properties:
+        FlipCoordinateSystem:
+          type: "boolean"
+          description: "Gets or sets to flip the coordinate system of the scene during\
+            \ exporting."
+        RenderMode:
+          description: "Render mode specifies the style in which the 3D artwork is\
+            \ rendered."
+          $ref: "#/definitions/PdfRenderMode"
+        LightingScheme:
+          description: "LightingScheme specifies the lighting to apply to 3D artwork."
+          $ref: "#/definitions/PdfLightingScheme"
+    - $ref: "#/definitions/SaveOptions"
+  PlySaveOption:
+    allOf:
+    - type: "object"
+      properties:
+        FlipCoordinate:
+          type: "boolean"
+          description: "Flip the coordinate while saving the scene, default value\
+            \ is true."
+        VertexElement:
+          type: "string"
+          description: "The element name for the vertex data, default value is \"\
+            vertex\"."
+        PositionComponents:
+          type: "array"
+          description: "The component names for position data, default value is (\"\
+            x\", \"y\", \"z\")"
+          items:
+            type: "string"
+        FaceElement:
+          type: "string"
+          description: "The element name for the face data, default value is face."
+        FaceProperty:
+          type: "string"
+          description: "The property name for the face data, default value is vertex_index."
+        FileContentType:
+          description: "Gets or sets  of the FileContent Style."
+          $ref: "#/definitions/FileContentType"
+    - $ref: "#/definitions/SaveOptions"
+  RvmSaveOption:
+    allOf:
+    - type: "object"
+      properties:
+        FileNote:
+          type: "string"
+          description: "File note in the file header."
+        Author:
+          type: "string"
+          description: "Author information, default value is '3d@aspose'."
+        CreationTime:
+          type: "string"
+          description: "The timestamp that exported this file, default value is current\
+            \ time."
+        FileContentType:
+          description: "Gets or sets  of the FileContent Style."
+          $ref: "#/definitions/FileContentType"
+    - $ref: "#/definitions/SaveOptions"
+  STLSaveOption:
+    allOf:
+    - type: "object"
+      properties:
+        FlipCoordinateSystem:
+          type: "boolean"
+          description: "Gets or sets whether flip coordinate system of control points/normal\
+            \ during exporting."
+        FileContentType:
+          description: "Gets or sets  of the FileContent Style."
+          $ref: "#/definitions/FileContentType"
+    - $ref: "#/definitions/SaveOptions"
+  U3DSaveOption:
+    allOf:
+    - type: "object"
+      properties:
+        FlipCoordinateSystem:
+          type: "boolean"
+          description: "Gets or sets whether flip coordinate system of control points/normal\
+            \ during importing/exporting."
+        MeshCompression:
+          type: "boolean"
+          description: "Gets or sets whether to enable mesh data compression."
+        ExportNormals:
+          type: "boolean"
+          description: "Gets or sets whether to export normal data."
+        ExportTextureCoordinates:
+          type: "boolean"
+          description: "Gets or sets whether to export texture coordinates."
+        ExportVertexDiffuse:
+          type: "boolean"
+          description: "Gets or sets whether to export vertex's diffuse color."
+        ExportVertexSpecular:
+          type: "boolean"
+          description: "Gets or sets whether to export vertex' specular color."
+    - $ref: "#/definitions/SaveOptions"
+  SaveOptions:
+    type: "object"
+    discriminator: "Type"
+    properties:
+      SaveFormat:
+        description: "Gets or sets  of the SaveFormat."
+        $ref: "#/definitions/SaveFormat"
+      LookupPaths:
+        type: "array"
+        description: "Some files like OBJ depends on external file, the lookup paths\
+          \ will allows Aspose.3D to look for external file to load"
+        items:
+          type: "string"
+      FileName:
+        type: "string"
+        description: "The file name of the exporting/importing scene. This is optional,\
+          \ but useful when serialize external assets like OBJ's material."
+      FileFormat:
+        type: "string"
+        description: "The file format like FBX,U3D,PDF ...."
+    example:
+      LookupPaths:
+      - "LookupPaths"
+      - "LookupPaths"
+      SaveFormat: {}
+      FileName: "FileName"
+      FileFormat: "FileFormat"
+  ColladaTransformStyle:
+    type: "integer"
+    description: "The node's transform style of node."
+    enum:
+    - "0"
+    - "1"
+    x-enumNames:
+    - "Components"
+    - "Matrix"
+  FileContentType:
+    type: "integer"
+    description: "File content type"
+    enum:
+    - "0"
+    - "1"
+    x-enumNames:
+    - "Binary"
+    - "ASCII"
+  SaveFormat:
+    type: "integer"
+    description: "SaveFormat type"
+    enum:
+    - "0"
+    - "1"
+    - "2"
+    - "3"
+    - "4"
+    - "5"
+    - "6"
+    - "7"
+    - "8"
+    - "9"
+    - "10"
+    - "11"
+    - "12"
+    - "13"
+    - "14"
+    - "15"
+    - "16"
+    - "17"
+    - "18"
+    - "19"
+    x-enumNames:
+    - "AMF"
+    - "ASE"
+    - "Aspose3DWeb"
+    - "Collada"
+    - "Discreet3DS"
+    - "Draco"
+    - "DXF"
+    - "FBX"
+    - "GLTF"
+    - "HTML"
+    - "JT"
+    - "Microsoft3MF"
+    - "Obj"
+    - "PDF"
+    - "PLY"
+    - "Rvm"
+    - "STL"
+    - "U3D"
+    - "VRML"
+    - "X"
+  DracoCompressionLevel:
+    type: "integer"
+    description: "Compression level for draco file"
+    enum:
+    - "0"
+    - "1"
+    - "2"
+    - "3"
+    x-enumNames:
+    - "NoCompression"
+    - "Fast"
+    - "Standard"
+    - "Optimal"
+  PdfRenderMode:
+    type: "integer"
+    description: "Render mode specifies the style in which the 3D artwork is rendered."
+    enum:
+    - "0"
+    - "1"
+    - "2"
+    - "3"
+    - "4"
+    - "5"
+    - "6"
+    - "7"
+    - "8"
+    - "9"
+    - "10"
+    - "11"
+    - "12"
+    - "13"
+    - "14"
+    x-enumNames:
+    - "Solid"
+    - "SolidWireframe"
+    - "Transparent"
+    - "TransparentWireframe"
+    - "BoundingBox"
+    - "TransparentBoundingBox"
+    - "TransparentBoundingBoxOutline"
+    - "Wireframe"
+    - "ShadedWireframe"
+    - "HiddenWireframe"
+    - "Vertices"
+    - "ShadedVertices"
+    - "Illustration"
+    - "SolidOutline"
+    - "ShadedIllustration"
+  PdfLightingScheme:
+    type: "integer"
+    description: "Render mode specifies the style in which the 3D artwork is rendered."
+    enum:
+    - "0"
+    - "1"
+    - "2"
+    - "3"
+    - "4"
+    - "5"
+    - "6"
+    - "7"
+    - "8"
+    - "9"
+    - "10"
+    - "11"
+    x-enumNames:
+    - "Artwork"
+    - "None"
+    - "White"
+    - "Day"
+    - "Night"
+    - "Hard"
+    - "Primary"
+    - "Blue"
+    - "Red"
+    - "Cube"
+    - "CAD"
+    - "Headlamp"
+  FilesUploadResult:
+    type: "object"
+    properties:
+      Uploaded:
+        type: "array"
+        description: "List of uploaded file names"
+        items:
+          type: "string"
+      Errors:
+        type: "array"
+        description: "List of errors."
+        items:
+          $ref: "#/definitions/Error"
+    description: "File upload result"
+    example:
+      Errors:
+      - Description: "Description"
+        Message: "Message"
+        InnerError:
+          RequestId: "RequestId"
+          Date: "2000-01-23T04:56:07.000+00:00"
+        Code: "Code"
+      - Description: "Description"
+        Message: "Message"
+        InnerError:
+          RequestId: "RequestId"
+          Date: "2000-01-23T04:56:07.000+00:00"
+        Code: "Code"
+      Uploaded:
+      - "Uploaded"
+      - "Uploaded"
+  Error:
+    type: "object"
+    properties:
+      Code:
+        type: "string"
+        description: "Code\n            "
+      Message:
+        type: "string"
+        description: "Message\n            "
+      Description:
+        type: "string"
+        description: "Description\n            "
+      InnerError:
+        description: "Inner Error\n            "
+        $ref: "#/definitions/ErrorDetails"
+    description: "Error"
+    example:
+      Description: "Description"
+      Message: "Message"
+      InnerError:
+        RequestId: "RequestId"
+        Date: "2000-01-23T04:56:07.000+00:00"
+      Code: "Code"
+  ErrorDetails:
+    type: "object"
+    required:
+    - "Date"
+    properties:
+      RequestId:
+        type: "string"
+        description: "The request id"
+      Date:
+        type: "string"
+        format: "date-time"
+        description: "Date"
+    description: "The error details"
+    example:
+      RequestId: "RequestId"
+      Date: "2000-01-23T04:56:07.000+00:00"
+  FilesList:
+    type: "object"
+    properties:
+      Value:
+        type: "array"
+        description: "Files and folders contained by folder StorageFile."
+        items:
+          $ref: "#/definitions/StorageFile"
+    description: "Files list"
+    example:
+      Value:
+      - Path: "Path"
+        Size: 0
+        IsFolder: true
+        ModifiedDate: "2000-01-23T04:56:07.000+00:00"
+        Name: "Name"
+      - Path: "Path"
+        Size: 0
+        IsFolder: true
+        ModifiedDate: "2000-01-23T04:56:07.000+00:00"
+        Name: "Name"
+  StorageFile:
+    type: "object"
+    required:
+    - "IsFolder"
+    - "Size"
+    discriminator: "Type"
+    properties:
+      Name:
+        type: "string"
+        description: "File or folder name."
+      IsFolder:
+        type: "boolean"
+        description: "True if it is a folder."
+      ModifiedDate:
+        type: "string"
+        format: "date-time"
+        description: "File or folder last modified DateTime."
+      Size:
+        type: "integer"
+        format: "int64"
+        description: "File or folder size."
+      Path:
+        type: "string"
+        description: "File or folder path."
+    description: "File or folder information"
+    example:
+      Path: "Path"
+      Size: 0
+      IsFolder: true
+      ModifiedDate: "2000-01-23T04:56:07.000+00:00"
+      Name: "Name"
+  StorageExist:
+    type: "object"
+    required:
+    - "Exists"
+    properties:
+      Exists:
+        type: "boolean"
+        description: "Shows that the storage exists.\n            "
+    description: "Storage exists"
+    example:
+      Exists: true
+  ObjectExist:
+    type: "object"
+    required:
+    - "Exists"
+    - "IsFolder"
+    properties:
+      Exists:
+        type: "boolean"
+        description: "Indicates that the file or folder exists."
+      IsFolder:
+        type: "boolean"
+        description: "True if it is a folder, false if it is a file."
+    description: "Object exists"
+    example:
+      Exists: true
+      IsFolder: true
+  DiscUsage:
+    type: "object"
+    required:
+    - "TotalSize"
+    - "UsedSize"
+    properties:
+      UsedSize:
+        type: "integer"
+        format: "int64"
+        description: "Application used disc space."
+      TotalSize:
+        type: "integer"
+        format: "int64"
+        description: "Total disc space."
+    description: "Class for disc space information."
+    example:
+      UsedSize: 0
+      TotalSize: 6
+  FileVersions:
+    type: "object"
+    properties:
+      Value:
+        type: "array"
+        description: "File versions FileVersion."
+        items:
+          $ref: "#/definitions/FileVersion"
+    description: "File versions FileVersion."
+    example:
+      Value:
+      - ""
+      - ""
+  FileVersion:
+    allOf:
+    - $ref: "#/definitions/StorageFile"
+    - type: "object"
+      required:
+      - "IsLatest"
+      properties:
+        VersionId:
+          type: "string"
+          description: "File Version ID."
+        IsLatest:
+          type: "boolean"
+          description: "Specifies whether the file is (true) or is not (false) the\
+            \ latest version of an file."
+      description: "File Version"
+    description: "File Version"
+  AccessTokenResponse:
+    type: "object"
+    properties:
+      ".expires":
+        type: "string"
+      access_token:
+        type: "string"
+      ".issued":
+        type: "string"
+      clientRefreshTokenLifeTimeInMinutes:
+        type: "string"
+      expires_in:
+        type: "integer"
+        format: "int64"
+      token_type:
+        type: "string"
+      client_id:
+        type: "string"
+      refresh_token:
+        type: "string"
+    example:
+      access_token: "access_token"
+      refresh_token: "refresh_token"
+      ".expires": ".expires"
+      token_type: "token_type"
+      expires_in: 0
+      clientRefreshTokenLifeTimeInMinutes: "clientRefreshTokenLifeTimeInMinutes"
+      client_id: "client_id"
+      ".issued": ".issued"
+x-generator: "NSwag v12.0.14.0 (NJsonSchema v9.13.18.0 (Newtonsoft.Json v12.0.0.0))"
