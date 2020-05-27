@@ -18,7 +18,7 @@
  * SOFTWARE.
  *
  */
-package aspose3dcloudtest
+package aspose3dcloud
 
 import (
 	//"os"
@@ -26,7 +26,7 @@ import (
 	"context"
 	"github.com/antihax/optional"		
 	"testing"
-	"github.com/Aspose-3D-Cloud/aspose-3d-cloud-go/v20"
+	//"github.com/Aspose-3D-Cloud/aspose-3d-cloud-go/v20"
 )
 
 /*
