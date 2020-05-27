@@ -42,9 +42,9 @@ HTML
 
 ## How to use the SDK
 
-1:Download the code and Add/Modify your application refer to three_d_cloud_test.go
-2:If you want to download by [Go Module](https://pkg.go.dev),please use
-  import "github.com/Aspose-3D-Cloud/aspose-3d-cloud-go/v20"
+- 1:Download the code and Add/Modify your application refer to three_d_cloud_test.go
+- 2:If you want to download by [Go Module](https://pkg.go.dev),please use
+  import "github.com/Aspose-3D-Cloud/aspose-3d-cloud-go/v20" in your code
 
 ## Licensing
 
