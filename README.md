@@ -40,13 +40,6 @@ X, JT, DXF, 3MF, ASE, VRML
 HTML
 
 
-## How to use the SDK
-
-Put the package under your project folder and add the following in import:
-```golang
-import "./aspose3dcloud"
-```
-
 
 ## Licensing
 
