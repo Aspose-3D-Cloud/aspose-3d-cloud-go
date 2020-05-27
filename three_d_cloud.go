@@ -27,7 +27,7 @@ var (
 )
 
 func Version() {
-	fmt.Println("---v20.5.0---")
+	fmt.Println("---Version: 20.5.0---")
 }
  
  
