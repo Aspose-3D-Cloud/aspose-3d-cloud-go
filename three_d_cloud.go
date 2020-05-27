@@ -26,6 +26,11 @@ var (
 	_ context.Context
 )
 
+func Version() {
+	fmt.Println("---v20.5.0---")
+}
+ 
+ 
 type ThreeDCloudApiService service
 
 /* Create Instance of 3DApiService
