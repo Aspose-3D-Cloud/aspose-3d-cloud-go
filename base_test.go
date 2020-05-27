@@ -18,13 +18,14 @@
  * SOFTWARE.
  *
  */
-package aspose3dcloud
+package aspose3dcloudtest
 
 import (
 	"os"
 	"context"
 	"github.com/antihax/optional"	
 	"fmt"
+	"github.com/Aspose-3D-Cloud/aspose-3d-cloud-go/v20"
 )
 var BaseTestInstance *BaseTest
 
