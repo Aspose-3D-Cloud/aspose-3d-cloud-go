@@ -31,6 +31,11 @@
 
 HTML
 
+## Enhancements Version 20.5
+- Added support to read/write more file formats.
+- Added support for HTML file format conversion.
+- New feature added to Triangulate part of the scene (Specified by OAP) and save the scene to a different file.
+
 ## Get Started with Aspose.3D Cloud SDK for Go
 
 Register an account at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) to get you application information. Next, download the repository and refer to `three_d_cloud_test.go`or download the [Go Module](https://pkg.go.dev/github.com/Aspose-3D-Cloud/aspose-3d-cloud-go/v20?tab=overview) using `import "github.com/Aspose-3D-Cloud/aspose-3d-cloud-go/v20"1` from your application.
