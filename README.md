@@ -40,6 +40,16 @@ HTML
 
 Register an account at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) to get you application information. Next, download the repository and refer to `three_d_cloud_test.go`or download the [Go Module](https://pkg.go.dev/github.com/Aspose-3D-Cloud/aspose-3d-cloud-go/v20?tab=overview) using `import "github.com/Aspose-3D-Cloud/aspose-3d-cloud-go/v20"1` from your application.
 
+## Convert 3D to PDF Conversion in GO
+
+```
+	// Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
+	threeDCloudApi , ctx, _ := api.NewThreeDCloudApiService("MY_CLIENT_ID", "MY_CLIENT_SECRET", "ap.aspose.cloud")
+	
+	response, httpResponse, err := threeDCloudApi.PostConvertByFormat("sample.3d", "pdf", "output.pdf")
+```
+
+
 ## Aspose.3D Cloud SDKs in Popular Languages
 
 | .NET | Java | PHP | Python | Ruby | Node.js | Swift | Perl | GO |
